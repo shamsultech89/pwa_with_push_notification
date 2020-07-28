@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<%== pagy_bootstrap_nav(@pagy) %>
+
+<div class="row">
+  <div class="col-sm-3 col-md-6 col-lg-1 col-xl-1">Name</div>
+  <div class="col-sm-3 col-md-6 col-lg-3 col-xl-3">Description</div>
+  <div class="col-sm-3 col-md-6 col-lg-6 col-xl-6">Image/Video</div>
+  <div class="col-sm-3 col-md-6 col-lg-2 col-xl-2">&nbsp;</div>
+</div>
+<br>
+
+<ul class="list-unstyled">
+  <% @products.each do |product| %>
+    <li class="media">
+      <% if product.image? %>
+        <%= image_tag product.image, class: "mr-3", style: "max-width:25%" %>
+      <% end %>
+      <div class="media-body">
+        <h5 class="mt-0 mb-1"><%= product.name %></h5>
+        <%= product.description %>
+        <br>
+        <% if product.video? %>
+          <video id="video" width="50%" height="auto" controls preload="metadata" src="<%= product.video %>" controls></video>
+        <% end %>
+        <br>
+        <%= link_to 'Show', product_path(product.id), class: 'btn btn-primary' %><%= link_to 'Edit', edit_product_path(product.id), class: "btn btn-secondary" %><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    </li>
+
+    <br>
+  <% end %>
+</ul>
+
+<%= link_to 'New Product', new_product_path %>

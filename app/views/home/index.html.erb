@@ -1,0 +1,19 @@
+<header>
+  <h1>Push Notification</h1>
+</header>
+
+<main>
+  <p><a onclick="sendNotification()" href="javascript:void(0);" class="btn btn-secondary">Send notification</a></p>
+
+  <p>
+    <button disabled class="js-push-btn btn btn-primary">
+      Enable Push Messaging
+    </button>
+  </p>
+  <section class="subscription-details js-subscription-details is-invisible">
+    <pre><code class="js-subscription-json"></code></pre>
+  </section>
+</main>
+
+
+<%= link_to 'Products', products_url %>
